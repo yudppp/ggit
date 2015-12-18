@@ -4,17 +4,37 @@
 <meta charset="UTF-8">
 <title>Electron Read Us</title>
 <link href="css/photon.min.css" rel="stylesheet" type="text/css">
+<link href="css/app.css" rel="stylesheet" type="text/css">
 <script>
-var simpleGit = require('simple-git')();
-window.$ = require("jquery");
-$(function() {
-  simpleGit.status(function(err, data) {
-	  console.log(data)
-  });
-});
+	var git = require('simple-git')();
+	window.$ = require("jquery");
+	$(function() {
+		git.status(function(err, data) {
+			console.log(data)
+			var $nav = $('#js-nav')
+			for(var k in data) {
+				console.log(k)
+				$nav.append('<h5 class="nav-group-title">' + k + '</h5>')
+				for(var v in data[k]) {
+					var path = data[k][v];
+					$nav.append('<div class="nav-group-item"><a href="#' + path + '">' + path + '</a></div>')
+				}
+			}
+		});
+	});
 </script>
 </head>
 <body>
-<h1>Hello, electron!</h1>
+<div class="window">
+	<div class="window-content">
+		<div class="pane-group">
+			<div class="pane-sm sidebar">
+				<nav id="js-nav" class="nav-group">
+				</nav>
+			</div>
+		<div class="pane">
+		</div>
+	</div>
+</div>
 </body>
 </html>
