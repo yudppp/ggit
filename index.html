@@ -5,7 +5,15 @@
 <title>Electron Read Us</title>
 <link href="css/photon.min.css" rel="stylesheet" type="text/css">
 <link href="css/app.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.12/vue.min.js">
 <script>
+	new Vue({
+  	el: '#app',
+  	data: {
+  	  message: 'Hello Vue.js!'
+  	}
+	})
+
 	var git = require('simple-git')();
 	window.$ = require("jquery");
 	$(function() {
@@ -25,7 +33,7 @@
 </script>
 </head>
 <body>
-<div class="window">
+<div id="app" class="window">
 	<div class="window-content">
 		<div class="pane-group">
 			<div class="pane-sm sidebar">
